@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robbie Leib"]
   s.date = "2012-01-09"
-  s.description = "TODO: longer description of your gem"
+  s.description = "Custom Rack::Throttle implementation for TheCity API"
   s.email = "robert.leib@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.15"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "Custom Rack::Throttle implementation for TheCity API"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
