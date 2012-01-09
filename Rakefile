@@ -2,6 +2,8 @@
 
 require 'rubygems'
 require 'bundler'
+require './lib/thecity/api/throttle/version.rb'
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -14,13 +16,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.version = Thecity::Api::Throttle::VERSION
   gem.files = FileList['lib/**/*.rb', '[A-Z]*', 'spec/**/*'].to_a
+  gem.version = Thecity::Api::Throttle::VERSION 
   gem.name = "thecity-api-throttle"
   gem.homepage = "http://github.com/robertleib/thecity-api-throttle"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Custom Rack::Throttle implementation for TheCity API}
+  gem.description = %Q{Custom Rack::Throttle implementation for TheCity API}
   gem.email = "robert.leib@gmail.com"
   gem.authors = ["Robbie Leib"]
   # dependencies defined in Gemfile
@@ -40,7 +42,7 @@ end
 
 task :default => :spec
 
-require 'rake/rdoctask'
+require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
