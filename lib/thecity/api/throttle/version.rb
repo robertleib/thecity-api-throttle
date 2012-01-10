@@ -1,4 +1,4 @@
-module Thecity
+module TheCity
   module Api
     module Throttle 
       VERSION = "0.0.2"
