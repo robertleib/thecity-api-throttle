@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robbie Leib"]
-  s.date = "2012-01-09"
+  s.date = "2012-01-10"
   s.description = "Custom Rack::Throttle implementation for TheCity API"
   s.email = "robert.leib@gmail.com"
   s.extra_rdoc_files = [
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "lib/thecity/api/throttle.rb",
+    "lib/thecity/api/throttle/hourly.rb",
     "lib/thecity/api/throttle/version.rb",
     "spec/spec_helper.rb",
     "spec/thecity-api-throttle_spec.rb"
