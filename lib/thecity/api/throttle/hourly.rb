@@ -7,7 +7,7 @@ module TheCity
       class Hourly < Rack::Throttle::Hourly
         
         def initialize(app, options = {})
-          @client_identifier = option[:client_identifier]
+          @client_identifier = options[:client_identifier]
           @ignore_path = options[:ignore_path]
           super
         end
