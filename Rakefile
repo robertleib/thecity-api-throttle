@@ -17,7 +17,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.files = FileList['lib/**/*.rb', '[A-Z]*', 'spec/**/*'].to_a
-  gem.version = Thecity::Api::Throttle::VERSION 
+  gem.version = TheCity::Api::Throttle::VERSION 
   gem.name = "thecity-api-throttle"
   gem.homepage = "http://github.com/robertleib/thecity-api-throttle"
   gem.license = "MIT"
