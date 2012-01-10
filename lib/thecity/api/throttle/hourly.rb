@@ -7,6 +7,8 @@ module TheCity
       class Hourly < Rack::Throttle::Hourly
         
         def initialize(app, options = {})
+          @client_identifier = option[:client_identifier]
+          @ignore_path = options[:ignore_path]
           super
         end
         
@@ -26,12 +28,18 @@ module TheCity
         end
         
         def need_throttling?(request)
-          return false if request.env["REQUEST_PATH"] =~ /^\/$|^\/accounts|^\/keys/i
+          return false if (@ignore_path.present? and request.env["REQUEST_PATH"] =~ /"#{@ignore_path}"/i)
           return true
         end
         
         def client_identifier(request)
-          request.env['X_CITY_USER_ID'] || request.env['HTTP_X_CITY_USER_ID'] || request.ip.to_s
+          identifier = case @client_identifier
+          when :ip
+            request.ip.to_s
+          else
+            request.env[@client_identifier]
+          end
+          return identifier || request.ip.to_s
         end
       end
   
