@@ -11,7 +11,7 @@ module TheCity
         end
         
         def allowed?(request)
-          need_throttling?(request) ? cache_incr(request) <= max_per_window : true
+          need_throttling?(request) ? super : true
         end
         
         def call(env)
