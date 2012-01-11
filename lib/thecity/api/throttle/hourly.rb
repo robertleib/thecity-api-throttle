@@ -41,24 +41,12 @@ module TheCity
           return identifier || request.ip.to_s
         end
         
-        def rate_limit_exceeded
-          #headers = {'Retry-After' => retry_after.to_f.ceil.to_s}
-          http_error(options[:code] || 403, options[:message] || 'Rate Limit Exceeded')
-        end
-
-
         def http_error(code, message = nil, headers = {})
-          [code, {'Content-Type' => 'application/json; charset=utf-8'}.merge(headers),
-            [{"error_code" => code, "error_message" => (message.nil? ? http_status(code) : message)}.to_json]]
+          [code, {'Content-Type' => 'application/json; charset=utf-8'}.merge(headers), [{"error_code" => code, "error_message" => (message.nil? ? http_status(code) : message)}.to_json]]
         end
 
-        ##
-        # Returns the standard HTTP status message for the given status `code`.
-        #
-        # @param  [Integer] code
-        # @return [String]
         def http_status(code)
-          [code, Rack::Utils::HTTP_STATUS_CODES[code]].join(' ')
+          Rack::Utils::HTTP_STATUS_CODES[code]
         end
       end
   
