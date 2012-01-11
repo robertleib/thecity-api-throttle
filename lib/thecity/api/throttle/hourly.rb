@@ -24,7 +24,7 @@ module TheCity
             headers['X-City-RateLimit-Limit'] = max_per_window.to_s
             headers['X-City-RateLimit-Remaining'] = ([0, max_per_window - (cache_get(cache_key(request)).to_i rescue 1)].max).to_s
           end
-          [status, headers, [body.to_json]]
+          [status, headers, [body]]
         end
         
         def need_throttling?(request)
@@ -42,7 +42,7 @@ module TheCity
         end
         
         def rate_limit_exceeded
-          headers = {'Retry-After' => retry_after.to_f.ceil.to_s}
+          #headers = {'Retry-After' => retry_after.to_f.ceil.to_s}
           http_error(options[:code] || 403, options[:message] || 'Rate Limit Exceeded', headers)
         end
 
