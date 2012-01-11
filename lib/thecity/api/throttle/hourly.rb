@@ -43,7 +43,7 @@ module TheCity
         
         def rate_limit_exceeded
           #headers = {'Retry-After' => retry_after.to_f.ceil.to_s}
-          http_error(options[:code] || 403, options[:message] || 'Rate Limit Exceeded', headers)
+          http_error(options[:code] || 403, options[:message] || 'Rate Limit Exceeded')
         end
 
 
