@@ -21,15 +21,14 @@ module TheCity
           request = Rack::Request.new(env)
 
           if need_throttling?(request)
-            headers['X-RateLimit-Limit'] = max_per_window.to_s
-            headers['X-RateLimit-Remaining'] = ([0, max_per_window - (cache_get(cache_key(request)).to_i rescue 1)].max).to_s
+            headers['X-City-RateLimit-Limit'] = max_per_window.to_s
+            headers['X-City-RateLimit-Remaining'] = ([0, max_per_window - (cache_get(cache_key(request)).to_i rescue 1)].max).to_s
           end
-          [status, headers, body]
+          [status, headers, [body.to_json]]
         end
         
         def need_throttling?(request)
-          return false if (@ignore_path.present? and request.env["REQUEST_PATH"] =~ /"#{@ignore_path}"/i)
-          return true
+          return !(@ignore_path.present? and request.env["REQUEST_PATH"] =~ /"#{@ignore_path}"/i)
         end
         
         def client_identifier(request)
