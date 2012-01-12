@@ -28,10 +28,9 @@ module TheCity
         end
         
         def need_throttling?(request)
-          puts @ignore_path
-          puts request.env["REQUEST_PATH"]
-          puts request.env["REQUEST_PATH"] =~ /"#{@ignore_path}"/i
+          puts "true" if @ignore_path.blank?
           return true if @ignore_path.blank?
+          puts !(request.env["REQUEST_PATH"] =~ /"#{@ignore_path}"/i) ? "true" : "false"
           return !(request.env["REQUEST_PATH"] =~ /"#{@ignore_path}"/i)
         end
         
