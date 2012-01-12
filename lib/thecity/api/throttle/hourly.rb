@@ -42,7 +42,7 @@ module TheCity
         end
         
         def http_error(code, message = nil, headers = {})
-          [code, {'Content-Type' => 'application/json; charset=utf-8'}.merge(headers), {"error_code" => code, "error_message" => (message.nil? ? http_status(code) : message)}.to_json]
+          [code, {'Content-Type' => 'application/json; charset=utf-8'}.merge(headers), [{"error_code" => code, "error_message" => (message.nil? ? http_status(code) : message)}.to_json]]
         end
 
         def http_status(code)
