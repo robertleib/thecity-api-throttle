@@ -1,8 +1,8 @@
 module TheCity
   module Api
     module Throttle
-      require 'thecity/api/throttle/hourly'
-      require 'thecity/api/throttle/version'
+      require './throttle/hourly.rb'
+      require './throttle/version.rb'
     end
   end
 end
