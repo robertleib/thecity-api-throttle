@@ -36,3 +36,6 @@ Thumbs.db
 
 *.rvmrc*
 *.conf
+*.gem
+*.gemspec
+.gitignore
