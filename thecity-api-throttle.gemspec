@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
     "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
-    "Rakefile",
     "lib/thecity/api/throttle.rb",
     "lib/thecity/api/throttle/hourly.rb",
     "lib/thecity/api/throttle/version.rb",
