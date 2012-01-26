@@ -22,6 +22,7 @@ module TheCity
 
           if need_throttling?(request)
             headers['X-City-RateLimit-Limit'] = max_per_window.to_s
+            headers['X-Client-Identifier'] = @client_identifier.to_s
             headers['X-City-RateLimit-Remaining'] = ([0, max_per_window - (cache_get(cache_key(request)).to_i rescue 1)].max).to_s
           end
           [status, headers, body]
