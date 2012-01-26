@@ -44,6 +44,9 @@ module TheCity
         end
         
         def http_error(code, message = nil, headers = {})
+          headers['X-City-RateLimit-Limit'] = max_per_window.to_s
+          headers['X-Client-Identifier'] = @client_identifier.to_s
+          headers['X-City-RateLimit-Remaining'] = ([0, max_per_window - (cache_get(cache_key(request)).to_i rescue 1)].max).to_s
           [code, {'Content-Type' => 'application/json; charset=utf-8'}.merge(headers), [{"error_code" => code, "error_message" => (message.nil? ? http_status(code) : message)}.to_json]]
         end
 
